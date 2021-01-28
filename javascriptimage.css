@@ -1,0 +1,17 @@
+#headline1 {
+      background-image: url(../images/01.gif);
+      background-repeat: no-repeat;
+      background-position: center; 
+/*top-left,bottom-right,center etc..*/
+      padding-top:0px;
+      margin-bottom:0px;
+   }
+
+#headline2 {
+      background-image: url(../images/bg.jpg);
+      background-repeat: no-repeat;
+      background-position: center; 
+/*top-left,bottom-right,center etc..*/
+      padding-top:0px;
+      margin-bottom:0px;
+   }

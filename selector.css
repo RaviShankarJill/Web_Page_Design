@@ -1,0 +1,140 @@
+a.button {
+		font-size:18px;
+		font-family:DigifaceWide;
+		color:white;
+		background:black;
+		text-decoration:none;
+		text-align:center;
+		display:inline-block;
+		width:75px;
+		padding:5px;
+		border:2px solid #000;
+		border-radius:7px;
+		
+}
+
+
+
+a.button:hover {
+		color:red;
+		background:#0ff;
+		box-shadow: 10px 5px 15px 2px black;
+}
+
+a.Rbutton {
+		font-size:20px;
+		font-family:Cooper;
+		color:red;
+		background:white;
+		text-decoration:none;
+		text-align:center;
+		display:outline-block;
+		width:75px;
+		padding:10px;
+		border:0px solid #000;
+		border-radius:100px 50px 0px;
+		
+}
+a.Rbutton:hover {
+		padding:10px;
+		color:black;
+		background:yellow;
+		border-radius:2px 200px 100px;
+}
+
+
+a.bckbutton {
+		font-size:20px;
+		font-family:Cooper;
+		color:red;
+		background:white;
+		text-decoration:none;
+		text-align:center;
+		display:outline-block;
+		width:100px;
+		padding:8px;
+		border:1px solid #000;
+		border-radius:10px;
+		
+}
+
+a.bckbutton:hover {
+		padding:8px;
+		color:white;
+		background:violet;
+		border-radius:15px;
+}
+
+a.flashbutton {
+color:#00ff00;
+background:black;
+font-size:20px;
+font-family:DigifaceWide;
+border:2px solid #000;
+border-radius:10px;
+border-style: dashed;
+padding:10px;
+}
+
+a.flashbutton:hover {
+color:red;
+background:white;
+cursor:pointer;
+}
+
+#flashbuttonread {
+font-family:Lucida Handwriting;
+color:blue;
+background:pink;
+font-size:20px;
+border:1px solid #000;
+border-radius:10px 100px 500px;
+padding:5px;
+}
+ 
+ 
+#flashbuttonread:hover{
+color:red;
+background:gray;
+}
+ 
+a.jbutton {
+		font-size:20px;
+		font-family:Lucida Handwriting;
+		color:black;
+		background:#E9E9E9;
+		text-decoration:none;
+		text-align:center;
+		display:inline-block;
+		width:75px;
+		padding:5px;
+		border:2px solid #000;
+		border-radius:0.7em 4em 1em 4em;
+
+}
+
+a.jbutton:hover{
+		color:white;
+		background:#B091FF;
+}
+
+a.subbutton {
+		font-size:20px;
+		font-family:Lucida Handwriting;
+		color:black;
+		background:#FFF;
+		text-decoration:none;
+		text-align:center;
+		display:outline-block;
+		width:75px;
+		padding:10px;
+		border:5px solid #000;
+		border-radius:5em 1em 15em 4em;
+
+}
+
+a.subbutton:hover{
+		color:black;
+		background:#B091FF;
+		box-shadow: 10px 5px 15px 2px white;
+}

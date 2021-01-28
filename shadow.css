@@ -1,0 +1,42 @@
+h3 {
+background-color: #cccccc;
+filter: progid:DXImageTransform.Microsoft.Chroma(Color=#cccccc)
+progid:DXImageTransform.Microsoft.Glow(Strength=20, Color=#ffffff);
+color:red;
+font-family:Lucida Handwriting;
+}
+
+h1 {
+background-color: #cccccc;
+filter: progid:DXImageTransform.Microsoft.Chroma(Color=#cccccc)
+progid:DXImageTransform.Microsoft.Glow(Strength=10, Color=yellow);
+font-family:Lucida Handwriting;
+
+}
+
+/*filter: Shadow(Color=#FFFFFF, direction=45, Strength=10);*/
+
+h2.rotate{
+-ms-transform:rotate(-20deg); /* IE 9 */
+position:absolute;
+top:3150px;
+left:700px;
+}
+
+h3.flash{
+background-color: #cccccc;
+filter: progid:DXImageTransform.Microsoft.Chroma(Color=#cccccc)
+progid:DXImageTransform.Microsoft.Glow(Strength=5, Color=#ffffff);
+color:black;
+font-family:Lucida Handwriting;
+}
+
+h4.html{
+
+background-color: #cccccc;
+filter: progid:DXImageTransform.Microsoft.Chroma(Color=#cccccc)
+progid:DXImageTransform.Microsoft.Glow(Strength=10, Color=#ffffff);
+color:green;
+font-family:Lucida Handwriting;
+font-size:30px;
+}

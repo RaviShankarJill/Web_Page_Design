@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="../css/selector.css">
+<style>
+textarea{
+width: 450px;
+word-wrap: break-word;
+padding: 10px;
+font-family:Arial;
+font-size:15px;
+}
+
+</style>
+</head>
+
+<body bgcolor="blue" text="white">
+<table width="1000" height="1000" border="0" cellspacing="0" style="background-color:black"  align="center">
+<tr>
+<td height="400" valign="top">
+<br>
+<a href="java.html" class="subbutton">Back to Java tutorial</a>
+<center>
+
+<h1>Step one:</h1>
+<textarea readonly rows="10" cols="100">
+Between &lt;head&gt;...&lt;/head&gt;
+<script>ebwrite()</script>
+
+Between &lt;body&gt;...&lt;/body&gt;
+<p>Place the cursor here to see the working of elastic-bullet </p>
+</textarea>
+</center>
+</td>
+</tr>
+
+
+<tr>
+<td valign="top">
+<center>
+<h1>Step two:</h1>
+<h4>Save as using js extension,in our example(elasticbullets.js)</h4>
+<textarea readonly rows="20" cols="100">
+
+var ebnumdots= 5;
+
+var ebimg= "bullet.gif";
+
+var ebHTML= null;
+
+var ebwidth= 11;
+
+var ebheight= 11;
+
+var ebseglength= 20;
+
+var ebspringk= 10;
+
+var ebmass= 1;
+
+var ebgravity= 50;
+
+var ebresistance= 10;
+
+var ebbounce= 0.75;
+
+var ebzindex= 5;
+
+
+
+
+
+// Private variables
+
+var ebmousex=0, ebmousey=0;
+
+var ebdeltat=0.02;
+
+var ebdots= new Array();
+
+
+
+
+// Browser detection
+
+
+// Global variables
+
+var browserversion=0.0;
+
+var browsertype=0; // 0: unknown; 1:MSIE; 2:NN
+
+// Return true if MSIE or NN detected
+function 
+browserdetect() 
+{
+  
+var agt= navigator.userAgent.toLowerCase();
+  var appVer= navigator.appVersion.toLowerCase();
+  
+browserversion= parseFloat(appVer);
+  var iePos= appVer.indexOf('msie');
+  
+if (iePos!=-1) browserversion= parseFloat(appVer.substring(iePos+5, appVer.indexOf(';',iePos)));
+  
+var nav6Pos = agt.indexOf('netscape6');
+ 
+if (nav6Pos!=-1) browserversion= parseFloat(agt.substring(nav6Pos+10))
+  browsertype= (iePos!=-1) ? 1 : (agt.indexOf('mozilla')!=-1) ? 2 : 0;
+  
+return(browsertype>0);
+}
+
+browserdetect();
+
+
+
+
+
+// General utils
+
+// Find object by name or id
+
+function ebobj(id) 
+{
+  
+var i, x;
+  x= document[id];
+  
+if (!x && document.all) x= document.all[id];
+  
+for (i=0; !x && i<document.forms.length; i++) 
+x= document.forms[i][id];
+  
+if (!x && document.getElementById) 
+x= document.getElementById(id);
+  
+return(x);
+
+}
+
+
+
+// Move object
+
+function ebmove(o, x, y) 
+{
+  if (!o) return;
+  
+if (o.style) 
+{
+    o.style.left= x+"px";
+   
+o.style.top= y+"px";
+  
+} 
+else 
+{
+    
+o.left= x;
+    
+o.top= y;
+  
+}
+
+}
+
+
+
+
+
+
+// Create dots
+
+function ebwrite() 
+{
+  
+var i, img;
+  
+var x=ebwidth/2, y=ebheight/2;
+
+  
+if (arguments.length==2) 
+{
+    
+x= arguments[0];
+    
+y= arguments[1];
+  
+}
+ 
+ebmousex=x; ebmousey=y;
+
+  
+if (browsertype<0 || browserversion<5) 
+return;
+
+  
+img= "";
+  
+ebdots[0]= new ebdot(x, y);
+  
+for (i=1; i<=ebnumdots; i++) 
+{
+    y+= ebseglength;
+    
+img+= "<div id='ebdot"+i+"' style='position:absolute; left:"+x+"; top:"+y+"; "+
+            "height:"+ebheight+"; width:"+ebwidth+"; z-index:"+ebzindex+"'>"+
+	    (ebHTML ? ebHTML :
+	      "<img src='"+ebimg+"' height='"+ebheight+"' width='"+ebwidth+"' border='0'>")+
+	  "</div>";
+
+
+ebdots[i]= new ebdot(x, y);
+  
+}
+  
+document.write(img);
+
+  for (i=1; i<=ebnumdots; i++) 
+{
+    
+ebdots[i].obj= ebobj("ebdot"+i);
+  
+}
+
+  
+switch (browsertype) 
+{
+    
+case 1:
+document.onmousemove=ebmousemoveIE;
+      
+break;
+    
+case 2:
+document.captureEvents(Event.MOUSEMOVE);
+  document.onmousemove=ebmousemoveNS;
+    break;
+  
+}
+
+  
+setInterval("ebanimate()", 1000*ebdeltat);
+
+}
+
+
+
+
+// Parameters of one dot
+
+function ebdot(x, y) 
+{
+  
+this.x= x;
+  
+this.y= y;
+  
+this.dx= 0;
+  
+this.dy= 0;
+  
+this.obj= null; 
+}
+
+
+
+
+// Capture mouse position
+
+
+function ebmousemoveNS(e) 
+{
+  
+ebmousex= e.pageX;
+  
+ebmousey= e.pageY;
+
+return(true);
+
+}
+
+function ebmousemoveIE() 
+{
+  
+ebmousex= window.event.clientX + document.body.scrollLeft;
+  
+ebmousey= window.event.clientY + document.body.scrollTop;
+
+}
+
+
+
+
+
+
+
+
+
+// Animation
+
+function ebanimate() 
+{
+
+  
+// Vector object
+  function ebvec(X, Y) 
+{
+    
+this.x = X;
+    
+this.y = Y;
+  
+}
+
+ 
+ // Add force in x and y direction to spring for ebdot[i] on ebdot[j]
+  
+
+function ebspring(i, j, spring) 
+{
+    
+var dx= ebdots[i].x-ebdots[j].x;
+    
+var dy= ebdots[i].y-ebdots[j].y;
+   
+var len= Math.sqrt(dx*dx+dy*dy);
+   
+if (len>ebseglength) 
+{
+      
+var springF= ebspringk*(len-ebseglength);
+      spring.x+= (dx/len)*springF;
+      
+spring.y+= (dy/len)*springF;
+   
+ }
+  
+}
+
+  
+var winleft= browsertype==2 ? 
+window.scrollX : document.body.scrollLeft;
+  
+var wintop= browsertype==2 ? 
+window.scrollY : document.body.scrollTop;
+  
+var winwidth= browsertype==2 ? window.innerWidth-14 : document.body.clientWidth;
+ 
+var winheight= browsertype==2 ? window.innerHeight : document.body.clientHeight;
+
+  
+ebdots[0].x= ebmousex-winleft;
+  ebdots[0].y= ebmousey-wintop;
+  
+for (i=1; i<=ebnumdots; i++) 
+{
+    
+var spring= new ebvec(0, 0);
+    
+ebspring(i-1, i, spring);
+    
+if (i<ebnumdots)
+ {
+      
+ebspring(i+1, i, spring);
+   
+ }
+    
+var resist= new ebvec(-ebdots[i].dx*ebresistance, -ebdots[i].dy*ebresistance);
+ 
+var accel= new ebvec((spring.x+resist.x)/ebmass, (spring.y+resist.y)/ebmass+ebgravity);
+ ebdots[i].dx+= (ebdeltat*accel.x);
+    
+ebdots[i].dy+=(ebdeltat*accel.y);
+   
+ebdots[i].x+= ebdots[i].dx;
+    
+ebdots[i].y+= ebdots[i].dy;
+   
+if(ebdots[i].y>=winheight-ebheight/2-1) 
+{
+      
+if (ebdots[i].dy>0) 
+{
+	
+ebdots[i].dy=-ebbounce*ebdots[i].dy;
+      
+}
+      
+ebdots[i].y= winheight-ebheight/2-1;
+    
+}
+    
+if (ebdots[i].y<ebheight/2) 
+{
+      
+if (ebdots[i].dy<0) 
+{
+	ebdots[i].dy= -ebbounce*ebdots[i].dy;
+     
+}
+      
+ebdots[i].y= ebheight/2;
+    
+}
+    
+if (ebdots[i].x>=winwidth-ebwidth/2) 
+{
+      
+if (ebdots[i].dx>0) 
+{
+	
+ebdots[i].dx= -ebbounce*ebdots[i].dx;
+      
+}
+    ebdots[i].x= winwidth-ebwidth/2-1;
+    
+}
+    
+if (ebdots[i].x<ebwidth/2) 
+{
+      
+if (ebdots[i].dx<0) 
+{
+	
+ebdots[i].dx= -ebbounce*ebdots[i].dx;
+      
+}
+      
+ebdots[i].x=ebwidth/2;
+    
+}
+    
+ebmove(ebdots[i].obj, winleft+ebdots[i].x-ebwidth/2, wintop+ebdots[i].y-ebheight/2);
+  }
+
+}
+
+
+</textarea>
+</center>
+
+</tr>
+</table>
+
+</body>
+</html>

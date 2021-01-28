@@ -1,0 +1,13 @@
+img.trs
+{
+opacity:0.5;
+filter:alpha(opacity=50); 
+}
+img.trs:hover
+{
+opacity:1.0;
+filter:alpha(opacity=100); 
+
+}
+
+

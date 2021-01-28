@@ -1,0 +1,27 @@
+hr.main {
+    	background: url(../images/hr.gif);
+    	border: none;
+    	height: 15px;
+	width:980px;
+}
+hr.flash{
+    	background: url(../images/hr3.gif);
+    	border: none;
+    	height: 10px;
+	width:1000px;
+}
+hr.java{
+    	background: url(../images/hr2.gif);
+    	border: none;
+    	height: 15px;
+	}
+
+#headline1 {
+      background-image: url(../images/road.jpg);
+	width:1000px;
+      background-repeat: no-repeat;
+      background-position:center; 
+/*top-left,bottom-right,center etc..*/
+      padding-top:50px;
+      margin-bottom:-20px;
+   }
